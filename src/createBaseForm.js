@@ -1,11 +1,17 @@
 import React from 'react';
 import {
-  argumentContainer, mirror,
-  getValueFromEvent, getErrorStrs,
-  hasRules, getParams,
-  isEmptyObject, flattenArray,
-  getNameKeyObj, getNameKeyStr,
-  flatFieldNames, clearVirtualField,
+  argumentContainer,
+  mirror,
+  getValueFromEvent,
+  getErrorStrs,
+  hasRules,
+  getParams,
+  isEmptyObject,
+  flattenArray,
+  getNameKeyObj,
+  getNameKeyStr,
+  flatFieldNames,
+  clearVirtualField,
 } from './utils';
 import AsyncValidator from 'async-validator';
 
@@ -15,10 +21,14 @@ const atom = {};
 
 function createBaseForm(option = {}, mixins = []) {
   const {
-    mapPropsToFields, onFieldsChange,
-    fieldNameProp, fieldMetaProp,
-    validateMessages, mapProps = mirror,
-    formPropName = 'form', withRef,
+    mapPropsToFields,
+    onFieldsChange,
+    fieldNameProp,
+    fieldMetaProp,
+    validateMessages,
+    mapProps = mirror,
+    formPropName = 'form',
+    withRef,
   } = option;
 
   function decorate(WrappedComponent) {
@@ -61,14 +71,18 @@ function createBaseForm(option = {}, mixins = []) {
           name = nameKeyObj.name;
         }
         const field = this.getField(name);
-        fieldContent = {
-          ...field,
-          value,
-          dirty: hasRules(validate),
-        };
-        this.setFields({
-          [name]: fieldContent,
-        });
+        if (value || field.value) {
+          fieldContent = {
+            ...field,
+            value,
+            dirty: hasRules(validate),
+          };
+          this.setFields({
+            [name]: fieldContent,
+          });
+
+        }
+
       },
 
       onChangeValidate(name_, action, ...args) {
@@ -579,7 +593,8 @@ function createBaseForm(option = {}, mixins = []) {
           ...formProps,
           ...this.props,
         });
-        return <WrappedComponent {...props}/>;
+        return <WrappedComponent {...props }
+        />;
       },
     });
 
