@@ -1,6 +1,6 @@
 {
-  "name": "rc-form",
-  "version": "0.17.2",
+  "name": "rc-form-ie",
+  "version": "0.17.25",
   "description": "React High Order Form Component",
   "keywords": [
     "react",
@@ -8,11 +8,11 @@
     "react-form",
     "form"
   ],
-  "homepage": "https://github.com/react-component/form",
+  "homepage": "https://github.com/minnaq/form",
   "author": "yiminghe@gmail.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-component/form.git"
+    "url": "https://github.com/minnaq/form.git"
   },
   "bugs": {
     "url": "https://github.com/react-component/form/issues"

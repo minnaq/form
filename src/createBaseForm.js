@@ -99,14 +99,17 @@ function createBaseForm(option = {}, mixins = []) {
           name = nameKeyObj.name;
         }
         const field = this.getField(name);
-        field.value = value;
-        field.dirty = true;
-        this.validateFieldsInternal([field], {
-          action,
-          options: {
-            firstFields: !!fieldMeta.validateFirst,
-          },
-        });
+        if (value || field.value) {
+          field.value = value;
+          field.dirty = true;
+          this.validateFieldsInternal([field], {
+            action,
+            options: {
+              firstFields: !!fieldMeta.validateFirst,
+            },
+          });
+        }
+
       },
 
       getCacheBind(name, action, fn) {
